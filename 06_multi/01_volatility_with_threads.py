@@ -35,9 +35,6 @@ class Ticker(threading.Thread):
         super().__init__(*args, **kwargs)
         self.scan_folder = os.path.join(os.getcwd(), file_name)
         self.file_object = file_object
-        # TODO: у нас два пошаренных между тредами объекта, но один лок для них. А зачем блокировать соседний тред для второго объекта, когда мы пользуем первый?
-        # TODO: Честно говоря, медитировал над вопросом, но так и не понял, на что он должен навести. Чтобы поток одновременно с первым не полез в общий котел?
-        # TODO: Для каждого shared объекта использовать свой лок. Либо как-то уменьшить число локов.
         self.volatility_dict = dict_total
         self.volatility_list = null_list
         self.min_current = 0
@@ -74,9 +71,7 @@ class Ticker(threading.Thread):
 
     def volatility_calculation(self):
         if self.max_current == 0:
-            with self.list_lock:  # TODO: А нужны ли здесь вообще локи? Операции же атомарные
-                             # TODO: https://stackoverflow.com/questions/6319207/are-lists-thread-safe
-                             # TODO: короче, если это не Queue то лучше все операции модификации делать под локом
+            with self.list_lock:
                 self.volatility_list.append(self.tracker_secid)
             cprint(f'\r{round(len(self.volatility_list) * 7.14)}%', end='', flush=True, color='blue')
         else:
@@ -127,4 +122,4 @@ def main(research_folder):
 
 if __name__ == '__main__':
     main(research_folder='trades')
-# зачет!
+

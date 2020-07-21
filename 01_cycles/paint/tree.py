@@ -4,7 +4,7 @@ import simple_draw as sd
 
 
 def tree():
-    def next_random_branches(angle, length, next_point1, next_point2, random_sign, color):  # TODO: использовать дефы внутри дефов тут нет необходимости. В tree2 тоже
+    def next_random_branches(angle, length, next_point1, next_point2, random_sign, color):
         random_angle = sd.random_number(1, 12)
         random_length = sd.random_number(1, 15)
         if random_sign == 0:

@@ -4,8 +4,7 @@
 
 import simple_draw as bricks
 
-# Нарисовать стену из кирпичей. Размер кирпича - 100х50
-# Использовать вложенные циклы for
+# Нарисовать стену из кирпичей. Использовать вложенные циклы for
 
 bricks.resolution = (600, 600)
 width = 100
@@ -40,4 +39,4 @@ for horizontal in range(13):
 
 
 bricks.pause()
-# зачет!
+

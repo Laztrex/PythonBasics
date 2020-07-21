@@ -36,18 +36,11 @@ class Ticker(Process):
         self.tracker_secid = ''
         self.conn = conn
         self.total_dict, self.null_list = my_dict, my_list
-        # TODO: не туда копаете. При работе со всякими межпроцессовыми каналами питонячие объекты под капотом
-        # TODO: сериализуются специальным образом с помощью библиотеки pickle. Питон вам говорит, что он не смог запиклить лямбду,
-        # TODO: соответственно, надо как-то это ограничение обойти. На стековерфлоу есть ответ ровно на этот вопрос, но я предлагаю подумать :)
 
-        # TODO: Нашел место, где в кишках это происходит. Я уже видел, что помогает библиотека dill (dill.loads/dill.dumps).
-        # TODO: Но оказывается при multiprocessing анонимной функции <lambda> говорят - https://priscree.ru/img/a301401db7714c.jpg
-        # TODO: но а defaultdict(dict) проходит. Т.е. в моем случае достаточно и обычного dict. Однако:
-        # TODO: еще можно перенаправить на module-level функцию:
-        # def tree():
-        #     return lambda: dict
-        # ......
-        # volatility_dict, null_volatility_list = defaultdict(tree), []
+    # def tree():
+    #     return lambda: dict
+    # ......
+    # volatility_dict, null_volatility_list = defaultdict(tree), []
 
     def run(self):
         try:
@@ -143,4 +136,3 @@ def main(research_folder):
 if __name__ == '__main__':
     main(research_folder='trades')
 
-# зачет! 

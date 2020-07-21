@@ -115,4 +115,3 @@ for line in lines:
         print(f'Invalid format: {exc}')
 perky(param=42)
 
-# зачет!

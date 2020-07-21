@@ -3,9 +3,6 @@
 import argparse
 from bowling import BowlingScoreCalc
 
-# Вас взяли на работу в молодой стартап. Идея стартапа - предоставлять сервис расчета результатов игр.
-# Начать решили с боулинга, упрощенной версии.
-#
 # Правила такие.
 #
 # Всего 10 кеглей. Игра состоит из 10 фреймов. В одном фрейме до 2х бросков, цель - сбить все кегли.
@@ -40,6 +37,3 @@ if __name__ == '__main__':
     calc_result_bowling = BowlingScoreCalc()
     calc_result_bowling.get_score(game_result=args.results)
 
-# При написании кода помнить, что заказчик может захотеть доработок и новых возможностей...
-# И, возможно, вам пригодится паттерн проектирования "Состояние",
-#   см https://clck.ru/Fudd8 и https://refactoring.guru/ru/design-patterns/state

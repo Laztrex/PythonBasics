@@ -17,7 +17,6 @@
 # ...
 #
 # Входные параметры: файл для анализа, файл результата
-# Требования к коду: он должен быть готовым к расширению функциональности. Делать сразу на классах.
 
 
 class LogAnalyser:
@@ -94,6 +93,3 @@ log_inspector_month.action()
 
 log_inspector_year = GroupYear(file_name='others/events.txt')
 log_inspector_year.action()
-
-# Для этого пригодится шаблон проектирование "Шаблонный метод" см https://goo.gl/Vz4828
-# зачет!

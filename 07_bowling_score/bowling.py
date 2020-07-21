@@ -102,5 +102,3 @@ class BowlingScoreCalc:
                     return [sum_scores]
                 else:
                     raise PinSizeError
-
-# зачет!

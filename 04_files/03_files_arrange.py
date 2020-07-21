@@ -21,19 +21,6 @@ import os, time, shutil, zipfile
 #
 # Файлы для работы взять из архива icons.zip - раззиповать проводником в папку icons перед написанием кода.
 # Имя целевой папки - icons_by_year (тогда она не попадет в коммит)
-#
-# Пригодятся функции:
-#   os.walk
-#   os.path.dirname
-#   os.path.join
-#   os.path.normpath
-#   os.path.getmtime
-#   time.gmtime
-#   os.makedirs
-#   shutil.copy2
-#
-# Чтение документации/гугла по функциям - приветствуется. Как и поиск альтернативных вариантов :)
-# Требования к коду: он должен быть готовым к расширению функциональности. Делать сразу на классах.
 
 path = 'others/icons.zip'
 new_dir = 'icons_by_year'
@@ -87,32 +74,9 @@ class SortZipFiles(SortFiles):
         shutil.copyfileobj(full_file_path, target)
 
 
-scan_photo = SortFiles(scan_folder=path, target_folder=new_dir)
-scan_photo.go_scan()
-
 # Усложненное задание (делать по желанию)
 # Нужно обрабатывать zip-файл, содержащий фотографии, без предварительного извлечения файлов в папку.
 # Основная функция должна брать параметром имя zip-файла и имя целевой папки.
-# Для этого пригодится шаблон проектирование "Шаблонный метод" см https://goo.gl/Vz4828
 
 scan_scan = SortZipFiles(scan_folder=path, target_folder=new_dir)
 scan_scan.go_scan()
-
-# TODO: Получился вариант через открытие файла и копирование объекта
-#  Прошу помочь как разрешить тот вариант (__setattr__/__getattr__)?
-# как вы сделали, это вполне ок
-# зачет!
-
-
-# class SortZipFiles(SortFiles):
-#
-#     def go_scan(self):
-#         self.zfile = zipfile.ZipFile(self.scan_dir, 'r')
-#         for zip_info in self.zfile.infolist():
-#             if zip_info.filename[-1] == '/':
-#                 continue
-#             zip_info.filename = os.path.basename(zip_info.filename)  # TODO: :(
-#             self.copy_new_dir(full_file_path=zip_info, new_path=self.new_path_generate(zip_info.date_time))
-#
-#     def copy_new_dir(self, full_file_path, new_path):
-#         self.zfile.extract(full_file_path, new_path)

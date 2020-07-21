@@ -142,9 +142,6 @@ def start_stat(file):
     stat_alphabet_descending = SortAlphabetDescending(file_name=file)
     stat_alphabet_descending.collect()
 
-# Для этого пригодится шаблон проектирование "Шаблонный метод" см https://goo.gl/Vz4828
-# зачет!
-
 
 if __name__ == '__main__':
     start_stat(file='others/voyna-i-mir.txt.zip')
